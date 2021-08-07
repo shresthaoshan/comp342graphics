@@ -46,7 +46,7 @@ def bresenham(startCoordinate: Coordinate,endCoordinate: Coordinate):
 
 
 def drawBSA():
-    coordinates = bresenham((-1,0),(3,2))
+    coordinates = bresenham((-1,-1), (2,2))
     glBegin(GL_LINES)
     glColor3f(0.0,0.0,1.0)
     for v in coordinates:
@@ -60,7 +60,7 @@ def main():
     display.set_caption("BSA - COMP343 Computer Graphics Lab")
 
     gluPerspective(40, 1, 1, 10)
-    glTranslatef(0.0, 0.0, -5)
+    glTranslatef(0.0, 0.0, -10)
 
     while True:
         for ev in event.get():

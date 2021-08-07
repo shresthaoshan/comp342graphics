@@ -95,8 +95,8 @@ def main():
     display.set_mode((400, 400), DOUBLEBUF | OPENGL | GL_RGB)
     display.set_caption("Flag of Nepal - COMP343 Computer Graphics Lab")
 
-    gluPerspective(40, 1, 1, 10)
-    glTranslatef(0.0, 0.0, -5)
+    gluPerspective(55, 1, 1, 10)
+    glTranslatef(0.0, 0, -2)
 
     while True:
         for ev in event.get():

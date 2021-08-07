@@ -28,8 +28,8 @@ def DDA(start_coordinate: Tuple[int, int], end_coordinate: Tuple[int, int]):
     return vertices
 
 def drawDDA():
-    vertices = DDA((-1,-1), (2,2))
-    glBegin(GL_LINES)
+    vertices = DDA((1,1), (20,40))
+    glBegin(GL_LINE_STRIP)
     glColor3f(0.0,0.0,1.0)
     for v in vertices:
         x,y = v
@@ -41,8 +41,8 @@ def main():
     display.set_mode((400, 400), DOUBLEBUF | OPENGL | GL_RGB)
     display.set_caption("DDA - COMP343 Computer Graphics Lab")
 
-    gluPerspective(40, 1, 1, 10)
-    glTranslatef(0.0, 0.0, -5)
+    gluPerspective(200, 1, 1, 10)
+    glTranslatef(0.0, 0.0, -10)
 
     while True:
         for ev in event.get():
