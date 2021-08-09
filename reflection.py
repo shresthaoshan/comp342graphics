@@ -53,7 +53,7 @@ def displayPaint():
 def main():
     pg.init()
     display.set_mode((600, 600), DOUBLEBUF | OPENGL | GL_RGB)
-    display.set_caption("Translate - COMP343 Computer Graphics Lab")
+    display.set_caption("Reflection - COMP343 Computer Graphics Lab")
 
     gluPerspective(150, 1, 1, 10)
     glTranslatef(0.0, 0.0, -10)
