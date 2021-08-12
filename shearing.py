@@ -18,12 +18,12 @@ def shear(point: Coordinate, shearX_by: int, shearY_by) -> Coordinate:
     shearY_m = ([1, 0, 0], [shearY_by, 1, 0], [0, 0, 1])
     
     composite_m = np.dot(shearX_m, shearY_m)
-    
     sheared_m = np.dot(composite_m, m)
-
-    xT, yT, _ = sheared_m
     
+    xT, yT, _ = sheared_m
+
     return (xT[0], yT[0])
+    
 
 def displayPaint():
     st_point: Coordinate = (-4,-6)
@@ -46,7 +46,7 @@ def displayPaint():
 def main():
     pg.init()
     display.set_mode((600, 600), DOUBLEBUF | OPENGL | GL_RGB)
-    display.set_caption("Shearing - COMP343 Computer Graphics Lab")
+    display.set_caption("Lab 4 - COMP343 Computer Graphics Lab")
 
     gluPerspective(150, 1, 1, 10)
     glTranslatef(0.0, 0.0, -10)
