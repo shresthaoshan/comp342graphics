@@ -107,7 +107,7 @@ def draw():
 def main():
     pg.init()
     display.set_mode((500, 500), DOUBLEBUF | OPENGL | GL_RGB)
-    display.set_caption("Lab 5 - Liang Barsky - COMP343 Computer Graphics Lab")
+    display.set_caption("Lab 5 - Cohen Sutherland - COMP343 Computer Graphics Lab")
 
     glTranslatef(0.0, 0.0, 0.0)
     gluOrtho2D(-320,320,-320,320)
