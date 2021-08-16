@@ -19,7 +19,6 @@ y_max = 300.0
 x_min = -300.0
 y_min = -300.0
 
-
 Coordinate = Tuple[float, float]
 ColorRGB = Tuple[float, float, float]
 
@@ -51,20 +50,16 @@ def computeCode(point: Coordinate):
   
 def cohenSutherlandClip(point1: Coordinate, point2: Coordinate):
     x1, y1 = point1
-    x2, y2 = point2
-    
+    x2, y2 = point2    
     code1 = computeCode((x1, y1))
     code2 = computeCode((x2, y2))
-
     accept = False
-  
     while True:
         if code1 == 0 and code2 == 0:
             accept = True
             break
         elif (code1 & code2) != 0:
             break
-  
         else:
             x = 1.0
             y = 1.0
@@ -72,7 +67,6 @@ def cohenSutherlandClip(point1: Coordinate, point2: Coordinate):
                 code_out = code1
             else:
                 code_out = code2
-  
             if code_out & TOP:
                 x = x1 + (x2 - x1) * (y_max - y1) / (y2 - y1)
                 y = y_max
@@ -101,7 +95,8 @@ def cohenSutherlandClip(point1: Coordinate, point2: Coordinate):
         drawLine((x1, y1), (x2, y2), (0.0, 1.0, 0.0))
 
 def draw():
-    cohenSutherlandClip((225, 115), (-78, 400))
+    cohenSutherlandClip((-225, 115), (-78, -400))
+    cohenSutherlandClip((800, 800), (-400, -200))
     glFlush()
 
 def main():
@@ -110,7 +105,7 @@ def main():
     display.set_caption("Lab 5 - Cohen Sutherland - COMP343 Computer Graphics Lab")
 
     glTranslatef(0.0, 0.0, 0.0)
-    gluOrtho2D(-320,320,-320,320)
+    gluOrtho2D(-500,500,-500,500)
 
     while True:
         for ev in event.get():
