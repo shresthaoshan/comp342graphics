@@ -18,13 +18,10 @@ Coordinate = Tuple[float, float, float]
 ColorRGB = Tuple[float, float, float]
 
 def drawLine(point1: Coordinate, point2: Coordinate, color: ColorRGB = (1.0, 1.0, 1.0)):
-    x1, y1, z1 = point1
-    x2, y2, z2 = point2
-    r, g, b = color
     glBegin(GL_LINE_STRIP)
-    glColor3f(r,g,b)
-    glVertex3d(x1,y1,z1)
-    glVertex3d(x2,y2,z2)
+    glColor3fv(color)
+    glVertex3dv(point1)
+    glVertex3dv(point2)
     glEnd()
 
 def translate(point: Coordinate, translateX_by: int, translateY_by: int, translateZ_by: int) -> Coordinate:
@@ -65,28 +62,31 @@ def main():
             if ev.type == pg.QUIT:
                 pg.quit()
                 quit()
-        # draw clipping window
         p1 = (1, 4, 40)
         p2 = (25, 4, 10)
+
+        # colors
         yellow  = (1, 1, 0)
         teal    = (0, 1, 1)
         white   = (1,1,1)
         _w   = (0.5,1,0.5)
-        drawLine((0, 0, 0), (200, 0, 0), (1, 0, 0)) # x
-        drawLine((0, 0, 0), (0, 200, 0), (0, 1, 0)) # y
-        drawLine((0, 0, 0), (0, 0, 200), (0, 0, 1)) # z
-        drawLine(p1, p2, yellow)
+        
+        drawLine((0, 0, 0), (200, 0, 0), (1, 0, 0)) # x-axis
+        drawLine((0, 0, 0), (0, 200, 0), (0, 1, 0)) # y-axis
+        drawLine((0, 0, 0), (0, 0, 200), (0, 0, 1)) # z-axis
+        drawLine(p1, p2, yellow) # original
+
         pT1 = translate(p1, 30, 60, 10)
         pT2 = translate(p2, 30, 60, 10)
-        drawLine(pT1, pT2, teal)
+        drawLine(pT1, pT2, teal) # translated
+
         pS1 = scale(p1, 4, 5, 1)
         pS2 = scale(p2, 4, 5, 1)
-        drawLine(pS1, pS2, white)
+        drawLine(pS1, pS2, white) # scaled
+
         pR1 = rotate(p1, 45)
         pR2 = rotate(p2, 45)
-        drawLine(pR1, pR2, _w)
-        # drawLine((x_min,y_min, 1), (x_max,y_min, 1), (1, 0, 0))
-        # drawLine((x_max,y_min, 1), (x_max,y_max, -1), (1, 1, 0))
+        drawLine(pR1, pR2, _w) # rotated
 
         display.flip()
 
